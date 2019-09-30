@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".view.home.HomeActivity">
+<androidx.core.widget.NestedScrollView
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_header_name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="Foods"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_text_searsh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_header_name">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryLight"
+                android:text="Search Your Reipect"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/ic_search_primary_light"
+                android:drawableStart="@drawable/ic_search_primary_light"
+                android:drawablePadding="10dp"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/header_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:foregroundGravity="center"
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/card_text_searsh"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <include android:id="@+id/shimmerMeal"
+            layout="@layout/shimmer_view_pagger"
+            />
+
+
+        <TextView
+            android:id="@+id/title_Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/header_view_pager"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Meal Categories"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondaryText"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_category"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/title_Category" />
+
+        <include android:id="@+id/shimmerCategory"
+            layout="@layout/shimmer_recycler_view"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@color/colorPrimaryLight"
+            android:gravity="center"
+            android:text="Foods"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
