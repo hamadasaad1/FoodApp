@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.ibnsaad.foods.adapter.ViewPagerHeader;
 import com.ibnsaad.foods.model.Categories;
 import com.ibnsaad.foods.model.Meals;
 import com.ibnsaad.foods.view.home.category.CategoryActivity;
+import com.ibnsaad.foods.view.home.details.DetailsActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -88,12 +90,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         headerViewPager.setAdapter(adapter);
         headerViewPager.setPadding(20,0,150,0);
         adapter.notifyDataSetChanged();
-        adapter.setOnItemClickListener(new ViewPagerHeader.ClickListener() {
-            @Override
-            public void ClickItem(View view, int position) {
-                Toast.makeText(HomeActivity.this, meal.get(position).getStrCategory()
-                        , Toast.LENGTH_SHORT).show();
-            }
+        adapter.setOnItemClickListener((view, position) -> {
+            TextView mealName=view.findViewById(R.id.mealName);
+            Intent intent=new Intent(getApplicationContext(), DetailsActivity.class);
+            intent.putExtra("EXTRA_DETAILS",mealName.getText().toString());
+            startActivity(intent);
         });
 
 

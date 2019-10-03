@@ -1,6 +1,7 @@
 package com.ibnsaad.foods.view.home.category;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.ibnsaad.foods.R;
 import com.ibnsaad.foods.Utils;
 import com.ibnsaad.foods.adapter.MealsByCategoryAdater;
 import com.ibnsaad.foods.model.Meals;
+import com.ibnsaad.foods.view.home.details.DetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -121,14 +123,12 @@ public class CategoryFragment extends Fragment implements CategoryView {
         recyclerMealCategory.setLayoutManager(manager);
         recyclerMealCategory.setClipToPadding(false);
         adater.notifyDataSetChanged();
-        adater.setOnItemClickListener(new MealsByCategoryAdater.ClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
+        adater.setOnItemClickListener((position, v) -> {
+            TextView mealName=v.findViewById(R.id.meal_Name);
+            Intent intent=new Intent(getContext(), DetailsActivity.class);
+            intent.putExtra("EXTRA_DETAILS",mealName.getText().toString());
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Meals"+meal.get(position).getStrMeal()
-                        , Toast.LENGTH_SHORT).show();
-
-            }
         });
 
     }
